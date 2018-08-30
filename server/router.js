@@ -1,29 +1,29 @@
 const express = require('express')
 const router = express.Router();
-const model = require('../database')
+const models = require('../database')
 
 
 router.get('/rooms', (req, res) => {
-  model.Room.findAll()
-  .then((err, data) => {
-    if(err) {
-      console.log(err);
-    }
-    res.send(data);
+models.Room.findAll()
+  .then (data => {
+    res.status( 200 ).send(data)
   })
+  .catch( error => {
+    res.send( error )
+  })  
 })
 
 router.get('/messages', (req, res) => {
-  model.Message.findAll({
+  models.Message.findAll({
     where: {
       roomId:1
     }
 })
-  .then((err, data) => {
-    if(err) {
-      console.log(err);
-    }
+  .then(data => {
     res.send(data);
+  })
+  .catch(error => {
+    res.send(error);
   })
 })
 
