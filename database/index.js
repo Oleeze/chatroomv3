@@ -47,6 +47,24 @@ const Message = sequelize.define('message', {
 Room.hasMany(Message, {as: 'room'});
 User.hasMany(Message, {as: 'user'});
 
-sequelize.sync({
-  force: true
-});
+// sequelize.sync({
+//   force: true
+// }).then(() => {
+//   return User.create({
+//     username: 'Oleg',
+//     email: 'orudenkony@gmail.com',
+//     password: 'Password'
+//   })
+// }).then(() => {
+//   return Room.create({
+//     name: 'Lobby1',
+//   })
+// }).then(() => {
+//   return Message.create({
+//     roomId: 1,
+//     userId: 1,
+//     message: 'Hello there lobby1'
+//   })
+// })
+
+module.exports = { User, Message, Room };
