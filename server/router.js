@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express.Router();
+const router = express.Router({ mergeParams : true });
 const models = require('../database')
 
 
@@ -15,9 +15,7 @@ models.Room.findAll()
 
 router.get('/messages', (req, res) => {
   models.Message.findAll({
-    where: {
-      roomId:1
-    }
+    where: req.query
 })
   .then(data => {
     res.send(data);
@@ -38,18 +36,27 @@ router.get('/user', (req, res) => {
 })
 
 router.post('/rooms', (req, res) => {
-  model.Room.create({
-    name: 'Lobby2'
-  }).then((err, data) => {
-    if (err) {
-      console.log(err)
-    }
-    res.send(data);
+  console.log(req.body);
+  models.Room.create( req.body )
+  .then(data => {
+    res.send(data)
+  })
+  .catch(error => {
+    console.log(error);
   })
 })
 
-router.post('/messages', (req, res) => {
 
+
+router.post('/messages', (req, res) => {
+  console.log(req.body)
+  models.Message.create( req.body)
+  .then(data => {
+    res.send(data)
+  })
+  .catch(error => {
+    console.log(error)
+  })
 })
 
 router.post('/user', (req, res) => {
