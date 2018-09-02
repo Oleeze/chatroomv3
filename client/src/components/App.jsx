@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import RoomList from "./RoomList.jsx";
 import MessageList from "./MessageList.jsx";
+import openSocket from "socket.io-client";
+const socket = openSocket("http://localhost:8080");
 
 class App extends Component {
   constructor(props) {
@@ -23,14 +25,17 @@ class App extends Component {
 
   componentDidMount() {
     let self = this;
-    axios
-      .get("/rooms")
-      .then(function(response) {
-        self.setState({ Rooms: response.data });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    socket.on("getRooms", data => {
+      self.setState({ Rooms: data.fulfillmentValue });
+    });
+    // axios
+    //   .get("/rooms")
+    //   .then(function(response) {
+    //     self.setState({ Rooms: response.data });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
 
   setRoom(e) {

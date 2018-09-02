@@ -3,15 +3,16 @@ const router = express.Router({ mergeParams : true });
 const models = require('../database')
 
 
-router.get('/rooms', (req, res) => {
-models.Room.findAll()
-  .then (data => {
-    res.status( 200 ).send(data)
-  })
-  .catch( error => {
-    res.send( error )
-  })  
-})
+// router.get('/rooms', (req, res) => {
+// models.Room.findAll()
+//   .then (data => {
+//     res.status( 200 ).send(data)
+//   })
+//   .catch( error => {
+//     res.send( error )
+//   })  
+// })
+
 
 router.get('/messages', (req, res) => {
   models.Message.findAll({
@@ -26,7 +27,7 @@ router.get('/messages', (req, res) => {
 })
 
 router.get('/user', (req, res) => {
-  model.User.findAll()
+  models.User.findAll()
   .then((err, data) => {
     if(err) {
       console.log(err);
