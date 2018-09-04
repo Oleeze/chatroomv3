@@ -2,19 +2,18 @@ const express = require('express')
 const router = express.Router({ mergeParams : true });
 const models = require('../database')
 
-
-// router.get('/rooms', (req, res) => {
-// models.Room.findAll()
-//   .then (data => {
-//     res.status( 200 ).send(data)
-//   })
-//   .catch( error => {
-//     res.send( error )
-//   })  
-// })
-
+router.get('/rooms', (req, res) => {
+  models.Room.findAll()
+    .then (data => {
+      res.status( 200 ).send(data)
+    })
+    .catch( error => {
+      res.send( error )
+  })  
+})
 
 router.get('/messages', (req, res) => {
+  console.log(req.params);
   models.Message.findAll({
     where: req.query
 })
@@ -27,7 +26,7 @@ router.get('/messages', (req, res) => {
 })
 
 router.get('/user', (req, res) => {
-  models.User.findAll()
+  model.User.findAll()
   .then((err, data) => {
     if(err) {
       console.log(err);

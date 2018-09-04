@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import RoomList from "./RoomList.jsx";
 import MessageList from "./MessageList.jsx";
-import openSocket from "socket.io-client";
-const socket = openSocket("http://localhost:8080");
+import io from "socket.io-client";
+const socket = io("http://localhost:8080");
 
 class App extends Component {
   constructor(props) {
@@ -23,80 +23,72 @@ class App extends Component {
     this.setMessage = this.setMessage.bind(this);
   }
 
+  //Grabs all of the Rooms on inital loading
   componentDidMount() {
-    let self = this;
-    socket.on("getRooms", data => {
-      self.setState({ Rooms: data.fulfillmentValue });
-    });
-    // axios
-    //   .get("/rooms")
-    //   .then(function(response) {
-    //     self.setState({ Rooms: response.data });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+    this.getRooms();
   }
 
+  //Grabs rooms
+  getRooms() {
+    let self = this;
+    axios.get("/rooms").then(response => {
+      self.setState({ Rooms: response.data });
+    });
+  }
+
+  //Grabs all messages depending on room
+  getMessages() {
+    let self = this;
+    console.log(self.state.RoomId);
+    axios
+      .get("/messages", { params: { roomId: self.state.RoomId } })
+      .then(response => {
+        self.setState({ Messages: response.data });
+      });
+  }
+
+  //Creates state of room that will be created
   setRoom(e) {
     this.setState({ Room: e.target.value });
   }
 
+  //Creates state of message that will be created
   setMessage(e) {
     this.setState({ Message: e.target.value });
   }
 
+  //Creates state of room ID and the grabs all messages based on room
   onClickGetMessages(e) {
-    this.setState({ RoomId: e });
-    console.log(this.state.RoomId);
-    let self = this;
-    axios
-      .get("/messages", {
-        params: {
-          roomId: e
-        }
-      })
-      .then(response => {
-        self.setState({ Messages: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.setState({ RoomId: e }, () => {
+      this.getMessages();
+    });
   }
 
+  //Creates Room
   onClickCreateRoom(e) {
     e.preventDefault();
-    let self = this;
-    console.log(self.state.Room);
-    axios
-      .post("/rooms", { name: self.state.Room })
-      .then(result => {
-        console.log(result.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    socket.emit("createRoom", { name: this.state.Room });
   }
 
+  //Creates Message
   onClickCreateMessage(e) {
     e.preventDefault();
-    let self = this;
-
-    axios
-      .post("/messages", {
-        message: self.state.Message,
-        roomId: self.state.RoomId,
-        userId: self.state.UserId
-      })
-      .then(result => {
-        console.log(result.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    socket.emit("createMessage", {
+      message: this.state.Message,
+      roomId: this.state.RoomId,
+      userId: this.state.UserId
+    });
   }
 
   render() {
+    //Will run when room is created
+    socket.on("getRooms", () => {
+      this.getRooms();
+    });
+    //Will run when message is created
+    socket.on("getMessages", () => {
+      this.getMessages();
+    });
     return (
       <div>
         <h4>Chatroom</h4>
