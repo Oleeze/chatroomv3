@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import Room from "./Room.jsx";
+import "./RoomList.scss";
 
 class RoomList extends Component {
   render() {
+    let style = this.props.RoomListStyle ? "ShowRoomList" : "HideRoomList";
+
     return (
-      <div>
-        <h4> THis is the Room</h4>
+      <div className={style}>
+        <h4>LOBBIES</h4>
         <div>
           {this.props.Rooms.map(room => (
             <Room

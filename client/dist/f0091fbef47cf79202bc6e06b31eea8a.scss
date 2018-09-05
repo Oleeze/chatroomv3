@@ -1,0 +1,136 @@
+$navy: #001e38;
+$green: #59ec9d;
+$header: #24404c;
+
+html {
+  background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  .Body {
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+  }
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 80%;
+}
+
+.Header {
+  top: 0;
+
+  background: $header;
+  width: 100%;
+  color: #ffffff;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+  margin-bottom: 3em;
+  .Title {
+    display: inline-block;
+  }
+  .TitleRight {
+    padding-left: 1%;
+    h1 {
+      padding: 3% 0;
+      font-size: 4em;
+      height: 50%;
+    }
+    p {
+      height: 50%;
+    }
+  }
+}
+
+.LoginWrapper {
+  position: relative;
+  margin: auto;
+  width: 30%;
+  h2 {
+    text-align: right;
+    color: $header;
+  }
+}
+
+.Login {
+  background: $green;
+
+  padding: 2em 2em;
+  border-radius: 7px;
+}
+
+.Field {
+  margin: 1em;
+  p {
+    margin: 0;
+    padding: 0 0 0.75em 0;
+  }
+  input {
+    border-radius: 7px;
+    border: none;
+    padding: 0.25em;
+    width: 100%;
+  }
+}
+
+.GetIN {
+  text-align: center;
+  margin: auto;
+  margin-top: 1em;
+  background: $header;
+  padding: 1em;
+  width: 50%;
+  border-radius: 7px;
+  color: #ffffff;
+}
+
+.DoYouHasAccount {
+  position: absolute;
+  bottom: 0px;
+  padding: 1.5em;
+  color: $header;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .LoginWrapper {
+    width: 90%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .LoginWrapper {
+    width: 75%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .LoginWrapper {
+    width: 60%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .LoginWrapper {
+    width: 50%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .LoginWrapper {
+    width: 40%;
+  }
+}

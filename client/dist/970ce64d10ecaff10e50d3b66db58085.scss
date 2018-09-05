@@ -1,0 +1,52 @@
+$navy: #001e38;
+$green: #59ec9d;
+$header: #24404c;
+
+html {
+  background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  .Body {
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+  }
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 80%;
+}
+
+.Header {
+  top: 0;
+
+  background: $header;
+  width: 100%;
+  color: #ffffff;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+  margin-bottom: 3em;
+  .Title {
+    display: inline-block;
+  }
+  .TitleRight {
+    padding-left: 1%;
+    h1 {
+      padding: 3% 0;
+      font-size: 4em;
+      height: 50%;
+    }
+    p {
+      height: 50%;
+    }
+  }
+}

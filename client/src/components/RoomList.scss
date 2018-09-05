@@ -1,0 +1,32 @@
+$navy: #001e38;
+$green: #59ec9d;
+$header: #24404c;
+
+.ShowRoomList {
+  background: #24404c;
+  width: 20%;
+  h4 {
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.HideRoomList {
+  display: none;
+}
+
+.Room {
+  background: $green;
+  margin: 1em 0 1em 0;
+  padding: 1em 0 1em 1em;
+  border-right: 2px solid $header;
+  border-bottom: 2px solid $header;
+  border-top: 2px solid $header;
+  width: 100%;
+  font: bold;
+  .RoomTitle {
+    color: $header;
+    font-size: 20px;
+    font-weight: 800;
+  }
+}

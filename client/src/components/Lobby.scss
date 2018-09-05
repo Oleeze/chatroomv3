@@ -1,0 +1,94 @@
+$navy: #001e38;
+$green: #59ec9d;
+$header: #24404c;
+
+.LobbyHeader {
+  display: flex;
+  background: $header;
+  color: #ffffff;
+  padding: 1em 0;
+  .LobbyHeaderInside {
+    flex: 1;
+    margin: auto 0;
+    padding: 0;
+    .LobbyHeaderLeft {
+      display: flex;
+      nav {
+        margin-left: 3em;
+        padding: 0 2em;
+        div {
+          width: 35px;
+          height: 5px;
+          background-color: #ffffff;
+          margin: 6px 0;
+          margin-right: 0;
+          position: relative;
+        }
+        div:first-of-type {
+          margin-top: 0;
+        }
+        div:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .LobbyHeaderRight {
+      display: flex;
+      justify-content: flex-end;
+      h4 {
+        margin-right: 2em;
+      }
+      .Logout {
+        h4 {
+          margin-left: 3em;
+          margin-right: 5em;
+        }
+      }
+      .Logout:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.Current {
+  background: $green;
+  padding: 1.5em 0 1.5em 5em;
+}
+
+.CreateRoom {
+  margin: 0;
+  display: flex;
+  background: $green;
+  .HeaderLeft {
+    justify-content: flex-start;
+    flex: 1;
+    margin-left: 10em;
+  }
+  .HeaderRight {
+    display: flex;
+    margin-right: 0;
+    flex: 1;
+  }
+}
+
+.Lobbys {
+  background: $header;
+  max-width: 14em;
+  h1 {
+    text-align: center;
+    color: #ffffff;
+    padding: 1em 0;
+  }
+  div {
+    div {
+      background: $green;
+      color: $header;
+      padding: 1em;
+      margin: 1em;
+    }
+    div:first-of-type {
+      margin-top: 0;
+    }
+  }
+}

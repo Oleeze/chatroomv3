@@ -1,0 +1,19 @@
+$navy: #001e38;
+$green: #59ec9d;
+$header: #24404c;
+
+.MessageListWrapper {
+  width: 80%;
+  margin: auto;
+  margin-top: 6em;
+  background: wheat;
+  .MessageList {
+    justify-content: center;
+    flex: 1;
+    background: $navy;
+    margin: auto;
+    .Message {
+      background: #59ec9d;
+    }
+  }
+}
