@@ -36,11 +36,15 @@ class Lobby extends Component {
   //Grabs rooms
   getRooms() {
     let self = this;
-    axios.get("/rooms").then(response => {
-      console.log(response.data);
-      self.setState({ Rooms: response.data });
-      self.setState({ CurrentRoom: this.state.Rooms[0].name });
-    });
+    axios
+      .get("/rooms")
+      .then(response => {
+        console.log(response.data);
+        self.setState({ Rooms: response.data });
+        self.setState({ RoomId: this.state.Rooms[0].id });
+        self.setState({ CurrentRoom: this.state.Rooms[0].name });
+      })
+      .then(() => this.getMessages());
   }
 
   //Grabs all messages depending on room
@@ -106,9 +110,6 @@ class Lobby extends Component {
     return (
       <div className="Body">
         <LobbyHeader hideRoomList={this.hideRoomList} />
-        <div className="Current">
-          <h3>Current Lobby: {this.state.CurrentRoom}</h3>
-        </div>
         <RoomList
           Room={this.state.Room}
           Rooms={this.state.Rooms}
@@ -116,6 +117,7 @@ class Lobby extends Component {
           onClickGetMessages={this.onClickGetMessages}
           onClickCreateRoom={this.onClickCreateRoom}
           RoomListStyle={this.state.RoomListStyle}
+          CurrentRoom={this.state.CurrentRoom}
         />
         <MessageList
           Messages={this.state.Messages}

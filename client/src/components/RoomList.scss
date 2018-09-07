@@ -3,16 +3,44 @@ $green: #59ec9d;
 $header: #24404c;
 
 .ShowRoomList {
+  visibility: visible;
+  position: absolute;
   background: #24404c;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  height: 100vh;
+  transform: translateX(100%);
   width: 20%;
-  h4 {
+  left: -20%;
+  .roomTitle {
+    text-align: center;
+    padding-top: 1em;
     color: white;
     font-size: 20px;
+  }
+  .RoomInput {
+    background: white;
+    padding: 0.5em 0.25em;
+    margin-left: 1em;
+    width: 60%;
+  }
+  .RoomInput::-webkit-input-placeholder {
+    color: $header;
+  }
+  .RoomSubmit {
+    background: $green;
+    padding: 0.5em 0.25em;
+    color: $header;
+    border-left: 1px solid $navy;
   }
 }
 
 .HideRoomList {
-  display: none;
+  position: absolute;
+  visibility: hidden;
 }
 
 .Room {

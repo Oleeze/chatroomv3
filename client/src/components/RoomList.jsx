@@ -8,11 +8,12 @@ class RoomList extends Component {
 
     return (
       <div className={style}>
-        <h4>LOBBIES</h4>
+        <h4 className="roomTitle">LOBBIES</h4>
         <div>
           {this.props.Rooms.map(room => (
             <Room
               room={room}
+              CurrentRoom={this.props.CurrentRoom}
               key={room.id}
               onClickGetMessages={this.props.onClickGetMessages}
             />
@@ -20,11 +21,14 @@ class RoomList extends Component {
         </div>
         <form onSubmit={this.props.onClickCreateRoom}>
           <input
+            className="RoomInput"
             type="text"
             placeholder="Room name"
             onChange={this.props.setRoom}
           />
-          <button type="submit">Create</button>
+          <button className="RoomSubmit" type="submit">
+            Create
+          </button>
         </form>
       </div>
     );

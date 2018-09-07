@@ -6,14 +6,51 @@ $header: #24404c;
   width: 80%;
   margin: auto;
   margin-top: 6em;
-  background: wheat;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   .MessageList {
-    justify-content: center;
-    flex: 1;
     background: $navy;
-    margin: auto;
+    border-radius: 6px;
+    padding: 0.8em;
     .Message {
-      background: #59ec9d;
+      color: $header;
+      background: white;
+      border-radius: 6px;
+      padding: 1em;
     }
+    .Message:first-of-type {
+      margin-bottom: 0.6em;
+    }
+    .Message:last-of-type {
+      margin-top: 0.6em;
+    }
+  }
+  .ShipIt {
+    display: block;
+    margin: 1em 0;
+    border-radius: 6px;
+    padding: 0.6em;
+    background: $navy;
+
+    input {
+      color: white;
+      background: $navy;
+    }
+    input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: white;
+    }
+  }
+  button {
+    float: right;
+    border-radius: 6px;
+    background: $green;
+    padding: 0.6em 2em;
+    color: $navy;
+    text-transform: uppercase;
+  }
+  button:hover {
+    cursor: pointer;
   }
 }

@@ -19,9 +19,8 @@ class LobbyHeader extends Component {
             <div className="LobbyHeaderRight">
               <h4>Oleg Rudenko</h4>
 
-              <Link to="/">
-                {" "}
-                <h4 className="Logout">Log Out </h4>
+              <Link className="Logout" to="/">
+                {"Sign Out "}
               </Link>
             </div>
           </div>

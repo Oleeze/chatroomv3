@@ -7,20 +7,21 @@ class MessageList extends Component {
     return (
       <div className="MessageListWrapper">
         <div className="MessageList">
-          <div className="Message">
-            {this.props.Messages.map(message => {
-              return <Message message={message} key={message.id} />;
-            })}
-          </div>
-          <form onSubmit={e => this.props.onClickCreateMessage(e)}>
+          {this.props.Messages.map(message => {
+            return <Message message={message} key={message.id} />;
+          })}
+        </div>
+        <form onSubmit={e => this.props.onClickCreateMessage(e)}>
+          <div className="ShipIt">
             <input
               type="text"
-              placeholder="Enter a message"
+              placeholder="Type a message..."
               onChange={this.props.setMessage}
             />
-            <button type="submit">Send</button>
-          </form>
-        </div>
+          </div>
+          <br />
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     );
   }

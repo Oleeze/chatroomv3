@@ -31,6 +31,9 @@ $header: #24404c;
           margin-bottom: 0;
         }
       }
+      nav:hover {
+        cursor: pointer;
+      }
     }
     .LobbyHeaderRight {
       display: flex;
@@ -39,10 +42,10 @@ $header: #24404c;
         margin-right: 2em;
       }
       .Logout {
-        h4 {
-          margin-left: 3em;
-          margin-right: 5em;
-        }
+        margin-left: 3em;
+        margin-right: 5em;
+        color: white;
+        text-decoration: none;
       }
       .Logout:hover {
         cursor: pointer;
