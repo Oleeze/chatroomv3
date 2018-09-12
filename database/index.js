@@ -19,11 +19,11 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING,
     unique: true,
   },
-  email: {
+  googleId: {
     type: Sequelize.STRING,
     unique: true,
   },
-  password: {
+  photo: {
     type: Sequelize.STRING
   }
 });
@@ -51,9 +51,9 @@ User.hasMany(Message, {as: 'user'});
 //   force: true
 // }).then(() => {
 //   return User.create({
-//     username: 'Oleg',
-//     email: 'orudenkony@gmail.com',
-//     password: 'Password'
+//     username: 'Test',
+//     googleId: '1',
+//     photo: 'Test'
 //   })
 // }).then(() => {
 //   return Room.create({

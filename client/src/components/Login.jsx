@@ -58,6 +58,9 @@ class Login extends Component {
             </div>
           </div>
         </div>
+        <a class="google-btn" href="/google">
+          Google+
+        </a>
       </div>
     );
   }
