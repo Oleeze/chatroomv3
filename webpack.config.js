@@ -1,7 +1,6 @@
 var path = require('path');
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: `${SRC_DIR}/index.js`,
@@ -48,7 +47,4 @@ module.exports = {
     contentBase: './',
     hot: true
   },
-  plugins: [
-    new HtmlWebpackPlugin()
-  ]
 };

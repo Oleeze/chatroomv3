@@ -4,7 +4,6 @@ class Room extends Component {
   render() {
     let currentRoom;
     if (this.props.CurrentRoom === this.props.room.name) {
-      console.log("Yes");
       currentRoom = "Current Lobby";
     }
     return (

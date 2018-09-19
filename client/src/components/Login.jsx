@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import LoginHeader from "./LoginHeader.jsx";
-import "./Login.scss";
+import "./styles/Login.scss";
+import { Link } from "react-router-dom";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -53,12 +55,10 @@ class Login extends Component {
             <p onClick={() => this.setState({ login: !login })}>
               I need an account
             </p>
-            <div onClick={() => this.props.history.push("/lobby")}>
-              <h4>Sign up</h4>
-            </div>
+            <Link to="/lobby">Sign Up</Link>
           </div>
         </div>
-        <a class="google-btn" href="/google">
+        <a className="google-btn" href="/google">
           Google+
         </a>
       </div>

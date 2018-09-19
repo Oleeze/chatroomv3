@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Room from "./Room.jsx";
-import "./RoomList.scss";
+import "./styles/RoomList.scss";
 
 class RoomList extends Component {
   render() {

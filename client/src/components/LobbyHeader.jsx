@@ -17,7 +17,7 @@ class LobbyHeader extends Component {
           </div>
           <div className="LobbyHeaderInside">
             <div className="LobbyHeaderRight">
-              <h4>Oleg Rudenko</h4>
+              <h4>{this.props.Name}</h4>
 
               <Link className="Logout" to="/">
                 {"Sign Out "}

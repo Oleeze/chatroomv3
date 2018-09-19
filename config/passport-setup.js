@@ -25,7 +25,6 @@ passport.use(
     .then((currentUser) => {
       if (null, currentUser){
         //already have the user
-        console.log('Current user is: ',currentUser)
         done(null, currentUser)
       } else {
         models.User.create({

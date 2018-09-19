@@ -4,7 +4,7 @@ import RoomList from "./RoomList.jsx";
 import MessageList from "./MessageList.jsx";
 import io from "socket.io-client";
 const socket = io("http://localhost:8080");
-import "./Lobby.scss";
+import "./styles/Lobby.scss";
 import LobbyHeader from "./LobbyHeader.jsx";
 
 class Lobby extends Component {
@@ -18,7 +18,8 @@ class Lobby extends Component {
       RoomId: 1,
       UserId: 1,
       RoomListStyle: false,
-      CurrentRoom: ""
+      CurrentRoom: "",
+      Name: ""
     };
     this.onClickGetMessages = this.onClickGetMessages.bind(this);
     this.onClickCreateRoom = this.onClickCreateRoom.bind(this);
@@ -26,10 +27,13 @@ class Lobby extends Component {
     this.setRoom = this.setRoom.bind(this);
     this.setMessage = this.setMessage.bind(this);
     this.hideRoomList = this.hideRoomList.bind(this);
+    this.hideAll = this.hideAll.bind(this);
   }
 
   //Grabs all of the Rooms on inital loading
   componentDidMount() {
+    let name = prompt("Please enter your name:");
+    this.setState({ Name: name });
     this.getRooms();
   }
 
@@ -39,7 +43,6 @@ class Lobby extends Component {
     axios
       .get("/rooms")
       .then(response => {
-        console.log(response.data);
         self.setState({ Rooms: response.data });
         self.setState({ RoomId: this.state.Rooms[0].id });
         self.setState({ CurrentRoom: this.state.Rooms[0].name });
@@ -50,7 +53,6 @@ class Lobby extends Component {
   //Grabs all messages depending on room
   getMessages() {
     let self = this;
-    console.log(self.state.RoomId);
     axios
       .get("/messages", { params: { roomId: self.state.RoomId } })
       .then(response => {
@@ -94,8 +96,13 @@ class Lobby extends Component {
     });
   }
 
+  //Switches between show and hide Rooms (changes className)
   hideRoomList() {
     this.setState({ RoomListStyle: !this.state.RoomListStyle });
+  }
+  // hides rooms
+  hideAll() {
+    this.setState({ RoomListStyle: false });
   }
 
   render() {
@@ -109,7 +116,7 @@ class Lobby extends Component {
     });
     return (
       <div className="Body">
-        <LobbyHeader hideRoomList={this.hideRoomList} />
+        <LobbyHeader hideRoomList={this.hideRoomList} Name={this.state.Name} />
         <RoomList
           Room={this.state.Room}
           Rooms={this.state.Rooms}
@@ -120,6 +127,7 @@ class Lobby extends Component {
           CurrentRoom={this.state.CurrentRoom}
         />
         <MessageList
+          HideRooms={this.hideAll}
           Messages={this.state.Messages}
           setMessage={this.setMessage}
           onClickCreateMessage={this.onClickCreateMessage}
