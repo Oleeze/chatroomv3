@@ -14,19 +14,19 @@ sequelize
     console.error('Unable to connect to database: ', err);
   })
 
-const User = sequelize.define('user', {
-  username: {
-    type: Sequelize.STRING,
-    unique: true,
-  },
-  googleId: {
-    type: Sequelize.STRING,
-    unique: true,
-  },
-  photo: {
-    type: Sequelize.STRING
-  }
-});
+// const User = sequelize.define('user', {
+//   username: {
+//     type: Sequelize.STRING,
+//     unique: true,
+//   },
+//   googleId: {
+//     type: Sequelize.STRING,
+//     unique: true,
+//   },
+//   photo: {
+//     type: Sequelize.STRING
+//   }
+// });
 
 const Room = sequelize.define('room', {
   name: {
@@ -41,20 +41,17 @@ const Message = sequelize.define('message', {
   },
   createdAt: {
     type: Sequelize.DATE,
+  },
+  username: {
+    type: Sequelize.STRING,
   }
 })
 
 Room.hasMany(Message, {as: 'room'});
-User.hasMany(Message, {as: 'user'});
+// User.hasMany(Message, {as: 'user'});
 
 // sequelize.sync({
 //   force: true
-// }).then(() => {
-//   return User.create({
-//     username: 'Test',
-//     googleId: '1',
-//     photo: 'Test'
-//   })
 // }).then(() => {
 //   return Room.create({
 //     name: 'Lobby1',
@@ -62,9 +59,9 @@ User.hasMany(Message, {as: 'user'});
 // }).then(() => {
 //   return Message.create({
 //     roomId: 1,
-//     userId: 1,
+//     username: 'Oleg',
 //     message: 'Hello there lobby1'
 //   })
 // })
 
-module.exports = { User, Message, Room };
+module.exports = { Message, Room };

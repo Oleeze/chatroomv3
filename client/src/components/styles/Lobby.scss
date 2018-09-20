@@ -6,21 +6,23 @@ $header: #24404c;
   display: flex;
   background: $header;
   color: #ffffff;
-  padding: 1em 0;
+  padding: 0.75em 0;
   .LobbyHeaderInside {
     flex: 1;
     margin: auto 0;
     padding: 0;
     .LobbyHeaderLeft {
       display: flex;
+      justify-content: baseline;
       nav {
+        margin-top: 1em;
         margin-left: 3em;
         padding: 0 2em;
         div {
           width: 35px;
-          height: 5px;
+          height: 3.5px;
           background-color: #ffffff;
-          margin: 6px 0;
+          margin: 5px 0;
           margin-right: 0;
           position: relative;
         }

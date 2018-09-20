@@ -25,9 +25,8 @@ router.get('/rooms', (req, res) => {
 })
 
 router.get('/messages', (req, res) => {
-  console.log(req.params);
   models.Message.findAll({
-    where: req.query
+    where: req.query,
 })
   .then(data => {
     res.send(data);

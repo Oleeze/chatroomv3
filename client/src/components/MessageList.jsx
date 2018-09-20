@@ -21,6 +21,7 @@ class MessageList extends Component {
                 type="text"
                 placeholder="Type a message..."
                 onChange={this.props.setMessage}
+                required
               />
             </div>
             <br />

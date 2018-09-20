@@ -16,7 +16,6 @@ class Lobby extends Component {
       Room: "",
       Message: "",
       RoomId: 1,
-      UserId: 1,
       RoomListStyle: false,
       CurrentRoom: "",
       Name: ""
@@ -56,6 +55,7 @@ class Lobby extends Component {
     axios
       .get("/messages", { params: { roomId: self.state.RoomId } })
       .then(response => {
+        console.log(response);
         self.setState({ Messages: response.data });
       });
   }
@@ -92,7 +92,7 @@ class Lobby extends Component {
     socket.emit("createMessage", {
       message: this.state.Message,
       roomId: this.state.RoomId,
-      userId: this.state.UserId
+      username: this.state.Name
     });
   }
 

@@ -12,7 +12,7 @@ class LobbyHeader extends Component {
                 <div />
                 <div />
               </nav>
-              <img src={require("./chatlogo.png")} width="30" height="30" />
+              <img src={require("./chatlogo.png")} width="43" height="43" />
             </div>
           </div>
           <div className="LobbyHeaderInside">

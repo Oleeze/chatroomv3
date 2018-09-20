@@ -25,6 +25,7 @@ class RoomList extends Component {
             type="text"
             placeholder="Room name"
             onChange={this.props.setRoom}
+            required
           />
           <button className="RoomSubmit" type="submit">
             Create
