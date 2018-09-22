@@ -1,11 +1,18 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
+import "moment-timezone";
 
 class Message extends Component {
   render() {
     return (
       <div className="Message">
-        <h5>{this.props.message.username}</h5>
-        <h4>{this.props.message.message}</h4>
+        <div className="MessageInfo">
+          <p>{this.props.message.username}</p>
+          <Moment className="Date" fromNow>
+            {this.props.message.createdAt}
+          </Moment>
+        </div>
+        <h3>{this.props.message.message}</h3>
       </div>
     );
   }

@@ -58,7 +58,10 @@ $header: #24404c;
 
 .Current {
   background: $green;
-  padding: 1.5em 0 1.5em 5em;
+  padding: 1.5em 0 1.5em 8.5%;
+  h3 {
+    color: $header;
+  }
 }
 
 .CreateRoom {

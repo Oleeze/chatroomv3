@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginHeader from "./LoginHeader.jsx";
 import "./styles/Login.scss";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -10,7 +10,13 @@ class Login extends Component {
       username: ""
     };
   }
-
+  submitForm(e) {
+    e.preventDefault();
+    this.props.history.push({
+      pathname: "/lobby",
+      state: { username: this.state.username }
+    });
+  }
   render() {
     const { username } = this.state;
     return (
@@ -18,23 +24,22 @@ class Login extends Component {
         <LoginHeader />
         <div className="LoginWrapper">
           <h2>LOGIN</h2>
-          <div className="Login">
-            <div className="Field">
-              <p>Username</p>
-              <input
-                value={username}
-                onChange={e => this.setState({ username: e.target.value })}
-                type="text"
-                placeholder="Enter a username"
-                required
-              />
+          <form onSubmit={this.submitForm.bind(this)}>
+            <div className="Login">
+              <div className="Field">
+                <p>Username</p>
+                <input
+                  onChange={e => this.setState({ username: e.target.value })}
+                  type="text"
+                  placeholder="Enter a username"
+                  required
+                />
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="Enter">
-          <Link className="Join" to="/lobby">
-            JOIN THE FUN
-          </Link>
+            <button className="Enter" type="submit">
+              <p>JOIN THE FUN</p>
+            </button>
+          </form>
         </div>
       </div>
     );

@@ -7,18 +7,16 @@ class Room extends Component {
       currentRoom = "Current Lobby";
     }
     return (
-      <div className="Room">
-        <h4
-          className="RoomTitle"
-          onClick={() =>
-            this.props.onClickGetMessages([
-              this.props.room.id,
-              this.props.room.name
-            ])
-          }
-        >
-          {this.props.room.name}
-        </h4>
+      <div
+        className="Room"
+        onClick={() =>
+          this.props.onClickGetMessages([
+            this.props.room.id,
+            this.props.room.name
+          ])
+        }
+      >
+        <h4 className="RoomTitle">{this.props.room.name}</h4>
         <p>{currentRoom}</p>
       </div>
     );

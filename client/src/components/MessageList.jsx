@@ -9,11 +9,16 @@ class MessageList extends Component {
         className="OuterMessageListWrapper"
         onClick={() => this.props.HideRooms()}
       >
+        <div className="Current">
+          <h3>CURRENTLY: {this.props.CurrentRoom}</h3>
+        </div>
         <div className="MessageListWrapper">
           <div className="MessageList">
-            {this.props.Messages.map(message => {
-              return <Message message={message} key={message.id} />;
-            })}
+            <div className="Messages">
+              {this.props.Messages.map(message => {
+                return <Message message={message} key={message.id} />;
+              })}
+            </div>
           </div>
           <form onSubmit={e => this.props.onClickCreateMessage(e)}>
             <div className="ShipIt">

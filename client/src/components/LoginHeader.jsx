@@ -8,7 +8,7 @@ class LoginHeader extends Component {
           <img src={require("./chatlogo.png")} height="80" width="80" />
         </div>
         <div className="TitleRight">
-          <h1>CHATTERCAT</h1>
+          <h1 className="AppName">CHATTERCAT</h1>
           <p>Keep in thouch with friends</p>
         </div>
       </div>

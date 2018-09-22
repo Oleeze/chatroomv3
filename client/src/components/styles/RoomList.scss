@@ -11,30 +11,53 @@ $header: #24404c;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
-  height: 100vh;
+  height: calc(100% - 62.5px);
   transform: translateX(100%);
   width: 20%;
   left: -20%;
+  box-sizing: border-box;
   .roomTitle {
     text-align: center;
     padding-top: 1em;
     color: white;
     font-size: 20px;
   }
-  .RoomInput {
-    background: white;
-    padding: 0.5em 0.25em;
-    margin-left: 1em;
-    width: 60%;
-  }
-  .RoomInput::-webkit-input-placeholder {
-    color: $header;
-  }
-  .RoomSubmit {
-    background: $green;
-    padding: 0.5em 0.25em;
-    color: $header;
-    border-left: 1px solid $navy;
+  .RoomWrapper {
+    height: calc(100% - 15%);
+    .Rooms {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 100%;
+      width: 105%;
+    }
+    .form {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .Rooms::-webkit-scrollbar {
+      left: -1em;
+      width: 0em;
+    }
+    .RoomInput {
+      background: white;
+      padding: 0.5em 0.25em;
+      margin-top: 2em;
+      margin-left: 1em;
+      width: 60%;
+    }
+    .RoomInput::-webkit-input-placeholder {
+      color: $header;
+    }
+    .RoomSubmit {
+      background: $green;
+      padding: 0.5em 0.25em;
+      color: $header;
+      border-left: 1px solid $navy;
+    }
+    .RoomSubmit:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -46,15 +69,53 @@ $header: #24404c;
 .Room {
   background: $green;
   margin: 1em 0 1em 0;
-  padding: 1em 0 1em 1em;
-  border-right: 2px solid $header;
-  border-bottom: 2px solid $header;
-  border-top: 2px solid $header;
+  padding: 1em 0 1em 2em;
+  border-right: 3px solid $header;
+  border-bottom: 3px solid $header;
+  border-top: 3px solid $header;
   width: 100%;
-  font: bold;
+  box-sizing: border-box;
   .RoomTitle {
     color: $header;
     font-size: 20px;
     font-weight: 800;
+  }
+}
+.Room:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .ShowRoomList {
+    left: -100% !important;
+    width: 100% !important;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-height: 850px) {
+  .RoomWrapper {
+    height: 80% !important;
+  }
+  .roomTitle {
+    padding-top: 0 !important;
+    font-size: 18px !important;
+  }
+  .Room {
+    padding: 0.75em 1em !important;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .ShowRoomList {
+    left: -30% !important;
+    width: 30% !important;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .ShowRoomList {
+    left: -20% !important;
+    width: 19.3% !important;
   }
 }

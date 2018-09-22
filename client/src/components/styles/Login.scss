@@ -25,14 +25,55 @@ p {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+}
+
+h1 {
+  font-family: Lato;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+}
+h3 {
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 15.4px;
+}
+p {
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+blockquote {
+  font-family: Lato;
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+pre {
+  font-family: Lato;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-y: hidden;
   .Body {
     width: 100vw;
     height: 100vh;
@@ -67,7 +108,7 @@ p {
   }
   .TitleRight {
     padding-left: 1%;
-    h1 {
+    .AppName {
       padding: 3% 0;
       font-size: 4em;
       height: 50%;
@@ -113,24 +154,28 @@ p {
 }
 
 .Enter {
-  text-align: center;
   margin: auto;
   margin-top: 1em;
   padding: 1em 2em;
   border-radius: 5px;
   color: white;
   background: #24404c;
-  width: 10%;
-  .Join {
-    text-decoration: none;
-    color: white;
-  }
+  display: flex;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .LoginWrapper {
     width: 90%;
+  }
+  .Enter {
+    width: 100%;
+    p {
+      margin: auto;
+    }
+  }
+  .AppName {
+    font-size: 3em !important;
   }
 }
 
