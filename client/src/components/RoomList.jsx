@@ -17,6 +17,7 @@ class RoomList extends Component {
                 CurrentRoom={this.props.CurrentRoom}
                 key={room.id}
                 onClickGetMessages={this.props.onClickGetMessages}
+                clearInput={this.props.clearInput}
               />
             ))}
           </div>

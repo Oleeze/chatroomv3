@@ -39,6 +39,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected')
   })
+  socket.on('typing', (data) => {
+    console.log(data);
+    socket.broadcast.emit('broadcast', data);
+  })
 })
 
 server.listen(8080, () => console.log('Listening on port 8080'));

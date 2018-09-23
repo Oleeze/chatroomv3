@@ -14,6 +14,7 @@ router.get('/rooms', (req, res) => {
 router.get('/messages', (req, res) => {
   models.Message.findAll({
     where: req.query,
+    order: [['updatedAt', 'DESC']]
 })
   .then(data => {
     res.send(data);

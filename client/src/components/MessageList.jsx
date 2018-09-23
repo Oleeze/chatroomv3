@@ -3,6 +3,19 @@ import Message from "./Message.jsx";
 import "./styles/MessageList.scss";
 
 class MessageList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pageNumber: 1
+    };
+  }
+
+  componentDidMount() {
+    this.refs.Messages.scrollTop = this.refs.Messages.scrollHeight;
+    console.log(this.refs.Messages.scrollTop);
+    console.log(this.refs.Messages.scrollHeight);
+  }
+
   render() {
     return (
       <div
@@ -14,13 +27,19 @@ class MessageList extends Component {
         </div>
         <div className="MessageListWrapper">
           <div className="MessageList">
-            <div className="Messages">
+            <div className="Messages" id="Messages" ref="Messages">
               {this.props.Messages.map(message => {
                 return <Message message={message} key={message.id} />;
               })}
             </div>
+            <div id="FeedBack" ref={this.props.CurrentRoom}>
+              {this.props.Who}
+            </div>
           </div>
-          <form onSubmit={e => this.props.onClickCreateMessage(e)}>
+          <form
+            onSubmit={e => this.props.onClickCreateMessage(e)}
+            id="MessageForm"
+          >
             <div className="ShipIt">
               <input
                 type="text"

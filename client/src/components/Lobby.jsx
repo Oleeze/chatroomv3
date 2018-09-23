@@ -18,8 +18,18 @@ class Lobby extends Component {
     //Will run when message is created
     socket.on("getMessages", () => {
       this.getMessages();
+      this.setState({ Who: "" });
     });
-
+    socket.on("broadcast", data => {
+      console.log(data);
+      if (data.room === this.state.CurrentRoom) {
+        if (data.length > 0) {
+          this.setState({ Who: data.name + " is typing..." });
+        } else if (data.length === 0) {
+          this.setState({ Who: "" });
+        }
+      }
+    });
     this.state = {
       Rooms: [],
       Messages: [],
@@ -28,7 +38,8 @@ class Lobby extends Component {
       RoomId: 1,
       RoomListStyle: false,
       CurrentRoom: "",
-      Name: ""
+      Name: "",
+      Who: ""
     };
     this.onClickGetMessages = this.onClickGetMessages.bind(this);
     this.onClickCreateRoom = this.onClickCreateRoom.bind(this);
@@ -37,6 +48,7 @@ class Lobby extends Component {
     this.setMessage = this.setMessage.bind(this);
     this.hideRoomList = this.hideRoomList.bind(this);
     this.hideAll = this.hideAll.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   //Grabs all of the Rooms on inital loading
@@ -74,6 +86,12 @@ class Lobby extends Component {
   //Creates state of message that will be created
   setMessage(e) {
     this.setState({ Message: e.target.value });
+    socket.emit("typing", {
+      name: this.state.Name,
+      length: e.target.value.length,
+      room: this.state.CurrentRoom
+    });
+    console.log(this.state.CurrentRoom);
   }
 
   //Creates state of room ID and the grabs all messages based on room
@@ -82,6 +100,17 @@ class Lobby extends Component {
       this.getMessages();
     });
     this.setState({ CurrentRoom: e[1] });
+    this.setState({ Who: "" });
+    document.getElementById("MessageForm").reset();
+  }
+
+  //When right before a room is selected the msg input gets reset
+  clearInput() {
+    socket.emit("typing", {
+      name: this.state.Name,
+      length: 0,
+      room: this.state.CurrentRoom
+    });
   }
 
   //Creates Room
@@ -123,12 +152,14 @@ class Lobby extends Component {
           onClickCreateRoom={this.onClickCreateRoom}
           RoomListStyle={this.state.RoomListStyle}
           CurrentRoom={this.state.CurrentRoom}
+          clearInput={this.clearInput}
         />
         <MessageList
           CurrentRoom={this.state.CurrentRoom}
           HideRooms={this.hideAll}
           Messages={this.state.Messages}
           setMessage={this.setMessage}
+          Who={this.state.Who}
           onClickCreateMessage={this.onClickCreateMessage}
         />
       </div>

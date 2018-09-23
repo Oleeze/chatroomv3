@@ -9,6 +9,7 @@ class Room extends Component {
     return (
       <div
         className="Room"
+        onMouseDown={() => this.props.clearInput()}
         onClick={() =>
           this.props.onClickGetMessages([
             this.props.room.id,
