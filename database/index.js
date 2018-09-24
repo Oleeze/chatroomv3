@@ -1,9 +1,22 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('chatroomv3', 'Oleg', 'Password', {
-  host: 'localhost',
-  dialect: 'postgres',
-  operatorsAliases: false,
-})
+let sequelize;
+
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect:  'postgres',
+    protocol: 'postgres',
+    port:     match[4],
+    host:     match[3],
+    logging:  true //false
+  })
+} else {
+  sequelize = new Sequelize('chatroomv3', 'Oleg', 'Password', {
+    host: 'localhost',
+    dialect: 'postgres',
+    operatorsAliases: false,
+  })
+}
+
 
 sequelize
   .authenticate()
@@ -14,19 +27,6 @@ sequelize
     console.error('Unable to connect to database: ', err);
   })
 
-// const User = sequelize.define('user', {
-//   username: {
-//     type: Sequelize.STRING,
-//     unique: true,
-//   },
-//   googleId: {
-//     type: Sequelize.STRING,
-//     unique: true,
-//   },
-//   photo: {
-//     type: Sequelize.STRING
-//   }
-// });
 
 const Room = sequelize.define('room', {
   name: {
@@ -49,18 +49,25 @@ const Message = sequelize.define('message', {
 
 Room.hasMany(Message, {as: 'room'});
 
-sequelize.sync({
-  force: false
-}).then(() => {
-  return Room.create({
-    name: 'Lobby1',
+sequelize.sync()
+.then(() => {
+    Room.create({
+      name: 'Lobby1',
+  }).then(room => {
+    console.log('success');
+  }).catch(err => {
+    console.log(err);
   })
-}).then(() => {
-  return Message.create({
+  Message.create({
     roomId: 1,
     username: 'Oleg',
     message: 'Hello there lobby1'
-  })
+}).then(message => {
+  console.log('success');
+}).catch(err => {
+  console.log(err);
 })
+})
+
 
 module.exports = { Message, Room };
