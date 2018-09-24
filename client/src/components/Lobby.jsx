@@ -21,7 +21,6 @@ class Lobby extends Component {
       this.setState({ Who: "" });
     });
     socket.on("broadcast", data => {
-      console.log(data);
       if (data.room === this.state.CurrentRoom) {
         if (data.length > 0) {
           this.setState({ Who: data.name + " is typing..." });
@@ -90,7 +89,6 @@ class Lobby extends Component {
       length: e.target.value.length,
       room: this.state.CurrentRoom
     });
-    console.log(this.state.CurrentRoom);
   }
 
   //Creates state of room ID and the grabs all messages based on room

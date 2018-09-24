@@ -12,8 +12,6 @@ class MessageList extends Component {
 
   componentDidMount() {
     this.refs.Messages.scrollTop = this.refs.Messages.scrollHeight;
-    console.log(this.refs.Messages.scrollTop);
-    console.log(this.refs.Messages.scrollHeight);
   }
 
   render() {

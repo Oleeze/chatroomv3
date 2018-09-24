@@ -49,25 +49,26 @@ const Message = sequelize.define('message', {
 
 Room.hasMany(Message, {as: 'room'});
 
-sequelize.sync()
-.then(() => {
-    Room.create({
-      name: 'Lobby1',
-  }).then(room => {
-    console.log('success');
-  }).catch(err => {
-    console.log(err);
-  })
-  Message.create({
-    roomId: 1,
-    username: 'Oleg',
-    message: 'Hello there lobby1'
-}).then(message => {
-  console.log('success');
-}).catch(err => {
-  console.log(err);
-})
-})
+//Uncomment for fresh database and run once, then comment again
+// sequelize.sync()
+// .then(() => {
+//     Room.create({
+//       name: 'Lobby1',
+//   }).then(room => {
+//     console.log('success');
+//   }).catch(err => {
+//     console.log(err);
+//   })
+//   Message.create({
+//     roomId: 1,
+//     username: 'Oleg',
+//     message: 'Hello there lobby1'
+// }).then(message => {
+//   console.log('success');
+// }).catch(err => {
+//   console.log(err);
+// })
+// })
 
 
 module.exports = { Message, Room };
