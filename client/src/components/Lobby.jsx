@@ -3,7 +3,7 @@ import axios from "axios";
 import RoomList from "./RoomList.jsx";
 import MessageList from "./MessageList.jsx";
 import io from "socket.io-client";
-const socket = io("http://localhost:8080");
+const socket = io();
 import "./styles/Lobby.scss";
 import LobbyHeader from "./LobbyHeader.jsx";
 
@@ -61,7 +61,6 @@ class Lobby extends Component {
   //Grabs rooms
   getRooms() {
     axios.get("/rooms").then(response => {
-      console.log(response);
       this.setState({ Rooms: response.data });
       this.setState({ RoomId: this.state.Rooms[0].id });
       this.setState({ CurrentRoom: this.state.Rooms[0].name });

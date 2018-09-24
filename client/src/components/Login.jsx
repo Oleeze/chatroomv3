@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import LoginHeader from "./LoginHeader.jsx";
 import "./styles/Login.scss";
-import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -18,7 +17,6 @@ class Login extends Component {
     });
   }
   render() {
-    const { username } = this.state;
     return (
       <div>
         <LoginHeader />
