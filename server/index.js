@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const router = require('./router.js');
 const models = require('../database')
-
+const port = process.env.PORT || 8080;
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
@@ -45,4 +45,4 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(8080, () => console.log('Listening on port 8080'));
+server.listen(port, () => console.log('Listening on port 8080'));

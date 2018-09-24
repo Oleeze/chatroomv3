@@ -48,7 +48,6 @@ class MessageList extends Component {
                 required
               />
             </div>
-            <br />
             <button type="submit">Send Message</button>
           </form>
         </div>

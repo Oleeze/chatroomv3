@@ -73,8 +73,8 @@ class Lobby extends Component {
     axios
       .get("/messages", { params: { roomId: this.state.RoomId } })
       .then(response => {
-        console.log(response);
         this.setState({ Messages: response.data });
+        this.setState({ RoomListStyle: false });
       });
   }
 
