@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const router = require('./router.js');
 const models = require('../database')
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8001;
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
