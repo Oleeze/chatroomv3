@@ -5,7 +5,7 @@
   "main": "./server/index.js",
   "scripts": {
     "start": "node ./server/index.js",
-    "heroku-postbuild": "webpack -d --watch"
+    "heroku-postbuild": "webpack -d"
   },
   "keywords": [],
   "author": "",
