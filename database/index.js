@@ -14,6 +14,20 @@ sequelize
     console.error('Unable to connect to database: ', err);
   })
 
+// const User = sequelize.define('user', {
+//   username: {
+//     type: Sequelize.STRING,
+//     unique: true,
+//   },
+//   googleId: {
+//     type: Sequelize.STRING,
+//     unique: true,
+//   },
+//   photo: {
+//     type: Sequelize.STRING
+//   }
+// });
+
 const Room = sequelize.define('room', {
   name: {
     type: Sequelize.STRING,
@@ -34,5 +48,19 @@ const Message = sequelize.define('message', {
 })
 
 Room.hasMany(Message, {as: 'room'});
+
+sequelize.sync({
+  force: false
+}).then(() => {
+  return Room.create({
+    name: 'Lobby1',
+  })
+}).then(() => {
+  return Message.create({
+    roomId: 1,
+    username: 'Oleg',
+    message: 'Hello there lobby1'
+  })
+})
 
 module.exports = { Message, Room };
