@@ -109,12 +109,8 @@ p {
   .TitleRight {
     padding-left: 1%;
     .AppName {
-      padding: 3% 0;
-      font-size: 4em;
-      height: 50%;
-    }
-    p {
-      height: 50%;
+      padding-bottom: 3%;
+      box-sizing: border-box;
     }
   }
 }
@@ -164,7 +160,13 @@ p {
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 350px) {
+  .AppName {
+    font-size: 28vw;
+  }
+}
+
+@media screen and (max-width: 545px) {
   .LoginWrapper {
     width: 90%;
   }
@@ -175,34 +177,46 @@ p {
     }
   }
   .AppName {
-    font-size: 3em !important;
+    font-size: 12vw !important;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media screen and (min-width: 430px) {
   .LoginWrapper {
     width: 75%;
+  }
+  .AppName {
+    font-size: 6.65vw;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .LoginWrapper {
     width: 60%;
+  }
+  .AppName {
+    font-size: 8vw;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .LoginWrapper {
     width: 50%;
+  }
+  .AppName {
+    font-size: 6.65vw;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .LoginWrapper {
     width: 40%;
+  }
+  .AppName {
+    font-size: 5vw;
   }
 }
